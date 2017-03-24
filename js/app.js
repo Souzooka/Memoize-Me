@@ -5,6 +5,7 @@ cache.save("#h6", "h6");
 cache.saveAll(".p", "p");
 console.log(cache.lookup("h1"));
 console.log(cache.lookup("h6"));
+cache.remove("h6");
 console.log(cache.lookup("p"));
 cache.lookup("h6").innerHTML = "hello";
 

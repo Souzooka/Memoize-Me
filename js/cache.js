@@ -21,6 +21,18 @@ class Cache {
     }
   }
 
+  clear() {
+    this._cache = {};
+  }
+
+  remove(identifier) {
+    if (this._cache.hasOwnProperty(identifier)) {
+      delete this._cache[identifier];
+    } else {
+      return false;
+    }
+  }
+
   lookup(identifier) {
     if (!this._cache.hasOwnProperty(identifier)) {
       return false;
