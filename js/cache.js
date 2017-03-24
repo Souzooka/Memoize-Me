@@ -3,41 +3,29 @@ class Cache {
     this._cache = {};
   }
 
-  save(query, identifier) {
-    if (this._cache.hasOwnProperty(identifier)) {
-      // Reference already exists
-      return false;
-    } else {
-      this._cache[identifier] = document.querySelector(query);
-    }
-  }
-
-  saveAll(query, identifier) {
-    if (this._cache.hasOwnProperty(identifier)) {
-      // Reference already exists
-      return false;
-    } else {
-      this._cache[identifier] = document.querySelectorAll(query);
-    }
-  }
-
   clear() {
     this._cache = {};
   }
 
-  remove(identifier) {
-    if (this._cache.hasOwnProperty(identifier)) {
-      delete this._cache[identifier];
+  remove(query) {
+    if (this._cache.hasOwnProperty(query)) {
+      delete this._cache[query];
     } else {
       return false;
     }
   }
 
-  lookup(identifier) {
-    if (!this._cache.hasOwnProperty(identifier)) {
-      return false;
-    } else {
-      return this._cache[identifier];
+  lookup(query) {
+    if (!this._cache.hasOwnProperty(query)) {
+      this._cache[query] = document.querySelector(query);
     }
+    return this._cache[query];
+  }
+
+  lookupAll(query) {
+    if (!this._cache.hasOwnProperty(query)) {
+      this._cache[query] = document.querySelectorAll(query);
+    }
+    return this._cache[query];
   }
 }
