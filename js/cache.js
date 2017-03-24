@@ -3,12 +3,21 @@ class Cache {
     this._cache = {};
   }
 
-  save(element, identifier) {
+  save(query, identifier) {
     if (this._cache.hasOwnProperty(identifier)) {
       // Reference already exists
       return false;
     } else {
-      this._cache[identifier] = element;
+      this._cache[identifier] = document.querySelector(query);
+    }
+  }
+
+  saveAll(query, identifier) {
+    if (this._cache.hasOwnProperty(identifier)) {
+      // Reference already exists
+      return false;
+    } else {
+      this._cache[identifier] = document.querySelectorAll(query);
     }
   }
 
