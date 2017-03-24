@@ -3,20 +3,20 @@ class Cache {
     this._cache = {};
   }
 
-  save(element) {
-    if (this._cache.hasOwnProperty(element)) {
+  save(element, identifier) {
+    if (this._cache.hasOwnProperty(identifier)) {
       // Reference already exists
-      return 0;
+      return false;
     } else {
-      this._cache[element] = element;
+      this._cache[identifier] = element;
     }
   }
 
-  lookup(element) {
-    if (!this._cache.hasOwnProperty(element)) {
+  lookup(identifier) {
+    if (!this._cache.hasOwnProperty(identifier)) {
       return false;
     } else {
-      return this._cache[element];
+      return this._cache[identifier];
     }
   }
 }
